@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="cardboard"></div>
+    <script src="main.js"></script>
+    <script src="client.js"></script>
+    <script> src="/socket.io/socket.io.js"</script>
+    <script> src="//code.jquery.com/jquery-3.2.1.min.js"</script>
+    
+    <div id="msgs"></div>
+    <input type="text"/>
+    
+    <script>
+    const socket = io("http://localhost:3000");
+    
+    client.on("connect', function(){
+
+    $("#msgs").append('Conectado com id: '+client.id+' '<br>'); 
+    socket.emit('msg', 'Estou conectado '+socket.id);
+    
+    socket.on('esg', function(msg) {
+         $("#msgs").append(msg+'<br>');
+    
+    $(function() {
+    $("input").KayDown(function(key){ 
+        if (key.keycode===13){
+        socket.emit('msg', $(this).val)()); 
+        $(this)).val('');
+        }
+    })
+})
+    
+    
+   </script>
+</body>
+</html>
